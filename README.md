@@ -1,83 +1,70 @@
-# DockOS
+# DockOS + Couchify Full-Stack Prototype
 
-**Operating system for physical presence.**
+Couchify is the consumer app for booking private spaces by the minute.
+DockOS is the infrastructure layer powering scheduling, sessions, pricing, and rules.
+DockGrid is the optional compute-sharing network for opted-in laptops.
+ComputePay lets guests reduce payment by sharing verified simulated compute in MVP.
 
-DockOS is a real-time infrastructure layer that converts physical space into programmable, schedulable units. It enables minute-level allocation, permission control, and monetization of environments — forming the foundation for next-generation spatial marketplaces.
+## Positioning
+- **DockOS** = infrastructure
+- **Couchify** = consumer app
+- **DockGrid** = opt-in compute network
+- **ComputePay** = pay-with-compute mechanism
 
----
+Core ideas:
+- “Private space by the minute.”
+- “Dock anywhere. Rest privately.”
+- “Pay with compute.”
+- “Turn idle space into live infrastructure.”
 
-## 🧠 Overview
+## Tech Stack
+- Next.js App Router
+- TypeScript
+- Tailwind CSS
+- Vercel deployment
+- Mock data first, optional external APIs later
 
-DockOS reframes physical space as a dynamic system.
-
-Instead of static locations, DockOS models space as:
-- allocatable
-- time-bound
-- permission-controlled
-- monetizable
-
-This allows real-world environments to behave like infrastructure — scheduled, executed, and released in real time.
-
----
-
-## 💡 Core Thesis
-
-> Space + time = programmable resource
-
-DockOS introduces a model where:
-- space becomes a unit
-- availability becomes a timeline
-- presence becomes a session
-- usage becomes measurable and priced
-
----
-
-## ⚙️ Core Capabilities
-
-- **Minute-level scheduling engine**
-- **Conflict-free allocation logic**
-- **Host-defined rule systems**
-- **Private access / “host-away” mode**
-- **Live session runtime (check-in / checkout / extension)**
-- **Payment + payout ledger**
-- **Messaging and dispute handling**
-- **Role-based access control**
-
----
-
-## 🧩 System Primitives
-
-| Entity | Description |
-|------|-------------|
-| SpaceUnit | A physical space (couch, desk, room) |
-| AvailabilityWindow | Time ranges for usage |
-| BookingRequest | Intent to reserve |
-| MicroBooking | Confirmed allocation |
-| CheckInSession | Active runtime session |
-| PaymentLedger | Financial record |
-| RuleSet | Behavioral constraints |
-
----
-
-## 🧱 Architecture
-
-**Backend**
-- FastAPI / Node API
-- PostgreSQL
-- Redis
-- WebSockets
-
-**Flow**
-1. Define space + rules  
-2. Define availability  
-3. Guest requests time  
-4. System validates + allocates  
-5. Session runs live  
-6. Usage is finalized + paid  
-
----
-
-## 🐳 Local Setup
-
+## Setup
 ```bash
-docker-compose up --build
+npm install
+npm run dev
+```
+
+## Environment Variables
+Copy `.env.example` to `.env.local`.
+
+- `NEXT_PUBLIC_DOCKOS_API_URL=` optional DockOS backend endpoint.
+- `NEXT_PUBLIC_HF_SPACE_URL=` optional public Hugging Face Space LLM endpoint.
+
+If both are empty, the app runs fully in **mock mode**.
+
+## Mock Mode Behavior
+- Space discovery, detail pages, host/guest workflows, and compute jobs are local mock data.
+- API wrappers in `lib/dockos.ts` switch to remote fetch only when env var is set.
+- LLM recommendation box uses a built-in recommendation fallback when HF URL is unset.
+
+## Vercel Deployment
+1. Push repository to Git provider.
+2. Import project in Vercel.
+3. Ensure build commands:
+   - Install: `npm install`
+   - Build: `npm run build`
+4. Add optional env vars in Vercel project settings.
+5. Deploy.
+
+`vercel.json` is included for explicit install/build commands.
+
+## Safety Note for Compute Sharing
+Compute in this MVP is **explicit opt-in only**:
+- No hidden compute
+- No mining
+- No arbitrary unsafe code
+- Simulated workloads only
+
+## Partnerships Language
+This prototype is **partnership-ready** and uses integration language only:
+- designed for integration with Docker-compatible workflows
+- designed for Render-style deployment patterns
+- compatible with host inventory models like Airbnb
+
+No official partnerships are claimed.
