@@ -111,9 +111,21 @@ export type RevenueSplit = {
 
 export type Message = {
   id: string;
-  bookingId: string;
+  conversationId: string;
   fromUserId: string;
+  toUserId: string;
   body: string;
+  createdAt: string;
+  read: boolean;
+  readAt?: string;
+};
+
+export type Conversation = {
+  id: string;
+  participantIds: [string, string];
+  lastMessage?: Message;
+  lastMessageAt: string;
+  unreadCount: number;
   createdAt: string;
 };
 

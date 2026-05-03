@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Logo from "@/components/Logo";
+import MessagesNav from "@/components/MessagesNav";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -8,7 +9,7 @@ export const metadata: Metadata = {
   description: "Private space by the minute."
 };
 
-const nav = ["explore", "host", "compute", "partnerships", "profile", "messages", "safety"];
+const nav = ["explore", "host", "compute", "partnerships", "profile", "safety"];
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -19,6 +20,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Logo />
             <nav className="hidden gap-4 md:flex">
               {nav.map((item) => <Link key={item} href={`/${item}`} className="text-sm capitalize text-textMuted hover:text-primary transition-colors">{item}</Link>)}
+              <MessagesNav />
             </nav>
           </div>
         </header>

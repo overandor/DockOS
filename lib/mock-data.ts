@@ -1,4 +1,4 @@
-import { ComputeJob, SpaceUnit, User } from "./types";
+import { ComputeJob, SpaceUnit, User, Message, Conversation } from "./types";
 
 const host: User = { id: "u-host-1", name: "Morgan Lee", role: "host", verified: true, rating: 4.9 };
 
@@ -48,3 +48,91 @@ export const computeJobs: ComputeJob[] = [
   { id: "j4", name: "Image thumbnail generation", estimatedMinutes: 6, reward: 1.1, safeMode: true },
   { id: "j5", name: "Synthetic test workload", estimatedMinutes: 10, reward: 1.7, safeMode: true }
 ];
+
+// Mock users for messaging
+const currentUser: User = { id: "user-current", name: "You", role: "guest", verified: true, rating: 4.8 };
+const otherUser1: User = { id: "user-1", name: "Alex Chen", role: "host", verified: true, rating: 4.9 };
+const otherUser2: User = { id: "user-2", name: "Jordan Martinez", role: "hybrid", verified: true, rating: 4.6 };
+const otherUser3: User = { id: "user-3", name: "Casey Williams", role: "guest", verified: true, rating: 4.7 };
+
+// Mock messages
+export const messages: Message[] = [
+  {
+    id: "msg-1",
+    conversationId: "conv-1",
+    fromUserId: "user-1",
+    toUserId: "user-current",
+    body: "Hi! Is the desk still available for tomorrow at 2 PM?",
+    createdAt: new Date(Date.now() - 3600000).toISOString(),
+    read: true,
+    readAt: new Date(Date.now() - 3500000).toISOString()
+  },
+  {
+    id: "msg-2",
+    conversationId: "conv-1",
+    fromUserId: "user-current",
+    toUserId: "user-1",
+    body: "Yes! I can book it for you. How many minutes do you need?",
+    createdAt: new Date(Date.now() - 3400000).toISOString(),
+    read: true,
+    readAt: new Date(Date.now() - 3300000).toISOString()
+  },
+  {
+    id: "msg-3",
+    conversationId: "conv-1",
+    fromUserId: "user-1",
+    toUserId: "user-current",
+    body: "Perfect! I'll need about 2 hours. Thanks!",
+    createdAt: new Date(Date.now() - 3200000).toISOString(),
+    read: true,
+    readAt: new Date(Date.now() - 3100000).toISOString()
+  },
+  {
+    id: "msg-4",
+    conversationId: "conv-2",
+    fromUserId: "user-2",
+    toUserId: "user-current",
+    body: "Hey, quick question about the WiFi speed",
+    createdAt: new Date(Date.now() - 1800000).toISOString(),
+    read: false
+  },
+  {
+    id: "msg-5",
+    conversationId: "conv-3",
+    fromUserId: "user-3",
+    toUserId: "user-current",
+    body: "Can I book the quiet room for next week?",
+    createdAt: new Date(Date.now() - 900000).toISOString(),
+    read: false
+  }
+];
+
+// Mock conversations
+export const conversations: Conversation[] = [
+  {
+    id: "conv-1",
+    participantIds: ["user-current", "user-1"],
+    lastMessage: messages[2],
+    lastMessageAt: messages[2].createdAt,
+    unreadCount: 0,
+    createdAt: new Date(Date.now() - 7200000).toISOString()
+  },
+  {
+    id: "conv-2",
+    participantIds: ["user-current", "user-2"],
+    lastMessage: messages[3],
+    lastMessageAt: messages[3].createdAt,
+    unreadCount: 1,
+    createdAt: new Date(Date.now() - 3600000).toISOString()
+  },
+  {
+    id: "conv-3",
+    participantIds: ["user-current", "user-3"],
+    lastMessage: messages[4],
+    lastMessageAt: messages[4].createdAt,
+    unreadCount: 1,
+    createdAt: new Date(Date.now() - 1800000).toISOString()
+  }
+];
+
+export const allUsers: User[] = [currentUser, otherUser1, otherUser2, otherUser3];
