@@ -29,7 +29,7 @@ export default async function SpaceDetailPage({ params }: { params: { id: string
         <SpaceQAChat space={space} />
       </div>
       <div className="space-y-4">
-        <BookingPanel pricePerMinute={space.pricePerMinute} />
+        <BookingPanel pricePerMinute={space.pricePerMinute} spaceId={space.id} />
         <ComputePayPanel />
       </div>
     </div>

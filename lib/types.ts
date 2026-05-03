@@ -68,7 +68,9 @@ export type PaymentLedger = {
   basePrice: number;
   computeCredit: number;
   finalPrice: number;
-  currency: "USD";
+  currency: "USD" | "ETH" | "BTC" | "SOL" | "USDC";
+  cryptoAmount?: number;
+  cryptoRate?: number;
 };
 
 export type ComputeNode = {
