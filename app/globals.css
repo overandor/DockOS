@@ -3,20 +3,24 @@
 @tailwind utilities;
 
 body {
-  background: #1a1410;
+  background: #0f0d0a;
   color: #f5f1ed;
+}
+
+html {
+  background: #0f0d0a;
 }
 
 /* Neomorphic glass effect */
 .glass {
-  background: rgba(42, 31, 21, 0.7);
+  background: rgba(26, 20, 16, 0.7);
   backdrop-filter: blur(12px);
   border: 1px solid rgba(212, 165, 116, 0.2);
 }
 
 /* Neomorphic button styles */
 .neo-button {
-  background: linear-gradient(135deg, #3a2b20 0%, #2a1f15 100%);
+  background: linear-gradient(135deg, #242118 0%, #1a1410 100%);
   box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.4), -8px -8px 16px rgba(255, 255, 255, 0.05);
   transition: all 0.3s ease;
   border: 1px solid rgba(212, 165, 116, 0.1);
@@ -24,7 +28,7 @@ body {
 
 .neo-button:hover {
   box-shadow: 12px 12px 20px rgba(0, 0, 0, 0.5), -12px -12px 20px rgba(255, 255, 255, 0.08);
-  background: linear-gradient(135deg, #4a3a2a 0%, #3a2b20 100%);
+  background: linear-gradient(135deg, #3a2e28 0%, #242118 100%);
 }
 
 .neo-button:active {
@@ -33,7 +37,7 @@ body {
 
 /* Neomorphic card styles */
 .neo-card {
-  background: linear-gradient(135deg, #3a2b20 0%, #2a1f15 100%);
+  background: linear-gradient(135deg, #242118 0%, #1a1410 100%);
   box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.4), -8px -8px 16px rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(212, 165, 116, 0.15);
   transition: all 0.3s ease;
@@ -45,7 +49,7 @@ body {
 
 /* Neomorphic input styles */
 .neo-input {
-  background: linear-gradient(135deg, #2a1f15 0%, #1a1410 100%);
+  background: linear-gradient(135deg, #1a1410 0%, #0f0d0a 100%);
   box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.5), inset -4px -4px 8px rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(212, 165, 116, 0.1);
   color: #f5f1ed;
@@ -55,6 +59,45 @@ body {
 .neo-input:focus {
   box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.5), inset -4px -4px 8px rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(212, 165, 116, 0.3);
+  outline: none;
+}
+
+/* Alert styles */
+.alert-success {
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: #10b981;
+}
+
+.alert-error {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #ef4444;
+}
+
+.alert-warning {
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  color: #f59e0b;
+}
+
+.alert-info {
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  color: #3b82f6;
+}
+
+/* Loading state */
+.loading {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* Disabled state */
+.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: not-allowed;
 }
 
 /* Golden accent for highlights */
